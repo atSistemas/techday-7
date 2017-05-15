@@ -6,4 +6,4 @@ Feature: Basic navigation check
 	Scenario: Navigate to latest news
 		Given I am on the Marvel Shop home page
 		When I try to read the "Latest News"
-		Then I should arrive to the "news" page
+		Then I should arrive to the "News" page

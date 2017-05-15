@@ -17,4 +17,8 @@ public class HomePOM {
 		this.driver.findElement(By.xpath("//a[contains(text(),'" + section + "')]")).click();
 	}
 
+	public String getTitle() {
+		return this.driver.getTitle();
+	}
+
 }

@@ -2,12 +2,14 @@ package stepdefinitions;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageobjects.HomePOM;
 
@@ -32,6 +34,11 @@ public class Steps {
 	@When("^I try to read the \"(.*?)\"$")
 	public void i_try_to_read_the(String section) {
 	    this.homePage.goToSection(section);
+	}
+	
+	@Then("^I should arrive to the \"(.*?)\" page$")
+	public void i_should_arrive_to_the_page(String expectedTitlePage) {
+	    Assert.assertTrue(homePage.getTitle().contains(expectedTitlePage));
 	}
 	
 	@After
