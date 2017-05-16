@@ -9,7 +9,9 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pageobjects.CharactersPOM;
 import pageobjects.HomePOM;
+import pageobjects.ResultsPOM;
 
 public class Steps {
 	

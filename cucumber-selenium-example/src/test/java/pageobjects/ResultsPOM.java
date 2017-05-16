@@ -1,4 +1,4 @@
-package stepdefinitions;
+package pageobjects;
 
 import java.util.List;
 
