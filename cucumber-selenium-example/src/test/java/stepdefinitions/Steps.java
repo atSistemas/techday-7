@@ -1,7 +1,5 @@
 package stepdefinitions;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,13 +15,14 @@ public class Steps {
 	
 	private WebDriver driver;
 	private HomePOM homePage;
+	private CharactersPOM charactersPage;
+	private ResultsPOM resultsPage;
 	
 	@Before
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\eriol\\OneDrive\\Trabajo\\atSistemas\\TechDay\\techday-7\\drivers\\chromedriver.exe");
 		this.driver = new ChromeDriver();
 		this.driver.manage().window().maximize();
-		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	@Given("^I am on the Marvel Shop home page$")
@@ -36,9 +35,23 @@ public class Steps {
 	    this.homePage.goToSection(section);
 	}
 	
+	@When("^I look for \"(.*?)\"$")
+	public void i_look_for(String character) {
+	    this.homePage.goToSection("Characters".toUpperCase());
+	    this.charactersPage = new CharactersPOM(this.driver);
+	    this.charactersPage.choose(character);
+	    this.resultsPage = new ResultsPOM(this.driver);
+	}
+	
 	@Then("^I should arrive to the \"(.*?)\" page$")
 	public void i_should_arrive_to_the_page(String expectedTitlePage) {
-	    Assert.assertTrue(homePage.getTitle().contains(expectedTitlePage));
+	    Assert.assertTrue(this.driver.getTitle().contains(expectedTitlePage));
+	}
+	
+	@Then("^I should see a list of \"(.*?)\" available products$")
+	public void i_should_see_a_list_of_available_products(String character) {
+	    Assert.assertTrue(this.driver.getTitle().contains(character));
+	    Assert.assertTrue(resultsPage.getProductsNumber() > 0);
 	}
 	
 	@After
