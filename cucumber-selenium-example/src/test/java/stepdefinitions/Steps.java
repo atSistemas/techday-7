@@ -32,6 +32,11 @@ public class Steps {
 		this.homePage = new HomePOM(this.driver);
 	}
 	
+	@Given("^I go to the \"(.*?)\"$")
+	public void i_go_to(String section) {
+	    this.homePage.goToSection(section.toUpperCase());
+	}
+	
 	@When("^I try to read the \"(.*?)\"$")
 	public void i_try_to_read_the(String section) {
 	    this.homePage.goToSection(section);
