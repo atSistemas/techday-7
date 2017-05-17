@@ -9,13 +9,13 @@ import org.openqa.selenium.WebElement;
 public class ResultsPOM {
 	
 	private WebDriver driver;
+	private By listItemsSelector = By.xpath("//section[@id='productList']/div[@class='productTile']");
 
 	public ResultsPOM(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	public int getProductsNumber() {
-		By listItemsSelector = By.xpath("//section[@id='productList']/div[@class='productTile']");
 		List<WebElement> listItems = driver.findElements(listItemsSelector);
 		return listItems.size();
 	}

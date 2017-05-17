@@ -7,11 +7,11 @@ Feature: Filter accessories results
 	Scenario: Filter accessories by Age Range
 		Given I am on the Marvel Shop home page
 		And I go to the "Accessories"
-		When I filter by age
+		When I filter by "Kids" age
 		Then I get fewer items
 	
 	Scenario: Filter accessories by Character name
 		Given I am on the Marvel Shop home page
 		And I go to the "Accessories"
-		When I filter by character name
+		When I filter by "Hulk" character name
 		Then I get fewer items
