@@ -1,13 +1,24 @@
 package pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HomePOM {
 	
 	private final String url = "https://shop.marvel.com/";
+	private WebDriver driver;
 	
 	public HomePOM(WebDriver driver) {
-    	driver.get(url);
+    	this.driver = driver;
+		this.driver.get(url);
+	}
+
+	public void goToSection(String section) {
+		this.driver.findElement(By.xpath("//a[contains(text(),'" + section + "')]")).click();
+	}
+
+	public String getTitle() {
+		return this.driver.getTitle();
 	}
 
 }
