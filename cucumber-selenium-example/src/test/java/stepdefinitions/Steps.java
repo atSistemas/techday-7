@@ -14,6 +14,7 @@ import cucumber.api.java.en.When;
 import pageobjects.AccessoriesPOM;
 import pageobjects.CharactersPOM;
 import pageobjects.HomePOM;
+import pageobjects.ProductPOM;
 import pageobjects.ResultsPOM;
 
 public class Steps {
@@ -24,6 +25,8 @@ public class Steps {
 	private CharactersPOM charactersPage;
 	private ResultsPOM resultsPage;
 	private AccessoriesPOM accessoriesPage;
+	private ProductPOM productPage;
+	private CartPOM cartPage;
 	
 	private int unfilteredResults;
 	
@@ -70,6 +73,15 @@ public class Steps {
 		this.accessoriesPage = new AccessoriesPOM(this.driver);
 		this.unfilteredResults = this.accessoriesPage.getNumberOfResults();
 		this.accessoriesPage.filterByCharacterName(characterName);		
+	}
+	
+	@When("^I try to purchase the first item$")
+	public void i_try_to_purchase_the_first_item() {
+		this.resultsPage.chooseFirstItem();
+		this.productPage = new ProductPOM(this.driver);
+		this.productPage.addToCart();
+		this.productPage.checkOut();
+		this.cartPage = new CartPOM(this.driver);
 	}
 	
 	@Then("^I should arrive to the \"(.*?)\" page$")

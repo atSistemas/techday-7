@@ -1,3 +1,4 @@
+@BasicNavigation
 Feature: Basic navigation check
 	In order to check the main navigation functionalities
 	As a customer
