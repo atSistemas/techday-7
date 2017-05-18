@@ -97,7 +97,7 @@ public class Steps {
 	}
 	
 	@Then("^I get fewer items$")
-	public void i_get_fewer_items() throws InterruptedException {
+	public void i_get_fewer_items() {
 		int filteredResults = this.accessoriesPage.getNumberOfResults();
 		Assert.assertTrue(this.unfilteredResults > filteredResults);
 	}
