@@ -33,7 +33,7 @@ public class Steps {
 	
 	@Before
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\eriol\\OneDrive\\Trabajo\\atSistemas\\TechDay\\techday-7\\drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "**** PONER AQUÍ PATH AL DRIVER EN TU EQUIPO ****");
 		this.driver = new ChromeDriver();
 		this.driver.manage().window().maximize();
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
